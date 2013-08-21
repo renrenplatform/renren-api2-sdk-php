@@ -187,7 +187,7 @@ class RennClientBase {
 	 *        	string token_type token的类型,可以为:bearer,mac
 	 * @return array
 	 */
-	private function getTokenFromTokenEndpoint($grantType, $keys, $tokenType = TokenType::MAC) {
+	protected function getTokenFromTokenEndpoint($grantType, $keys, $tokenType = TokenType::MAC) {
 		$params = array ();
 		$params ['client_id'] = $this->clientId;
 		$params ['client_secret'] = $this->clientSecret;

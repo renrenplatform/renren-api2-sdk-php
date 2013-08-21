@@ -13,7 +13,7 @@ class ProfileService extends RennServiceBase {
              $fileParams = array();
 	     if (isset($userId)) {
 	             $params ['userId'] = $userId;
-	    }
+	     }
              return $this->client->execute('/v2/profile/get', 'GET', $params, $bodyParams, $fileParams);
          } 
 }

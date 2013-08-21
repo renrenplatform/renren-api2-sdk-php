@@ -5,7 +5,7 @@ class PhotoService extends RennServiceBase {
          * 上传照片至用户相册。此接口需要采用multipart/form-data的编码方式。
          * <br />对应API:{$link http://dev.renren.com/API/v2/photo/upload }
          * @param Long $albumId 相册ID,albumId省略时会上传到应用相册
-         * @param String $description 照片描述
+         * @param String $description 照片描述。不能超过200个字符
          * @param $paramter.simpleType2 $file 照片
          * @return Photo 照片
          */
@@ -15,10 +15,10 @@ class PhotoService extends RennServiceBase {
              $fileParams = array();
 	     if (isset($albumId)) {
 	             $params ['albumId'] = $albumId;
-	    }
+	     }
 	     if (isset($description)) {
 	             $params ['description'] = $description;
-	    }
+	     }
 	     if (isset($file)) {
 	             $fileParams ['file'] = $file;
 	     }
@@ -39,16 +39,16 @@ class PhotoService extends RennServiceBase {
              $fileParams = array();
 	     if (isset($albumId)) {
 	             $params ['albumId'] = $albumId;
-	    }
+	     }
 	     if (isset($photoId)) {
 	             $params ['photoId'] = $photoId;
-	    }
+	     }
 	     if (isset($ownerId)) {
 	             $params ['ownerId'] = $ownerId;
-	    }
+	     }
 	     if (isset($password)) {
 	             $params ['password'] = $password;
-	    }
+	     }
              return $this->client->execute('/v2/photo/get', 'GET', $params, $bodyParams, $fileParams);
          } 
         /**
@@ -67,19 +67,19 @@ class PhotoService extends RennServiceBase {
              $fileParams = array();
 	     if (isset($albumId)) {
 	             $params ['albumId'] = $albumId;
-	    }
+	     }
 	     if (isset($ownerId)) {
 	             $params ['ownerId'] = $ownerId;
-	    }
+	     }
 	     if (isset($pageSize)) {
 	             $params ['pageSize'] = $pageSize;
-	    }
+	     }
 	     if (isset($pageNumber)) {
 	             $params ['pageNumber'] = $pageNumber;
-	    }
+	     }
 	     if (isset($password)) {
 	             $params ['password'] = $password;
-	    }
+	     }
              return $this->client->execute('/v2/photo/list', 'GET', $params, $bodyParams, $fileParams);
          } 
 }

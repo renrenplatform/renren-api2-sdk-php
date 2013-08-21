@@ -5,7 +5,7 @@ class BlogService extends RennServiceBase {
          * 以分页的方式获取某个用户的日志列表
          * <br />对应API:{$link http://dev.renren.com/API/v2/blog/list }
          * @param Long $ownerId 日志所有者的ID
-         * @param Integer $pageSize 页面大小。取值范围1-200，默认大小20
+         * @param Integer $pageSize 页面大小。取值范围1-20，默认大小10
          * @param Integer $pageNumber 页码。取值大于零，默认值为1
          * @return Blog 日志
          */
@@ -15,13 +15,13 @@ class BlogService extends RennServiceBase {
              $fileParams = array();
 	     if (isset($ownerId)) {
 	             $params ['ownerId'] = $ownerId;
-	    }
+	     }
 	     if (isset($pageSize)) {
 	             $params ['pageSize'] = $pageSize;
-	    }
+	     }
 	     if (isset($pageNumber)) {
 	             $params ['pageNumber'] = $pageNumber;
-	    }
+	     }
              return $this->client->execute('/v2/blog/list', 'GET', $params, $bodyParams, $fileParams);
          } 
         /**
@@ -39,13 +39,13 @@ class BlogService extends RennServiceBase {
              $fileParams = array();
 	     if (isset($title)) {
 	             $params ['title'] = $title;
-	    }
+	     }
 	     if (isset($accessControl)) {
 	             $params ['accessControl'] = $accessControl;
-	    }
+	     }
 	     if (isset($password)) {
 	             $params ['password'] = $password;
-	    }
+	     }
 	     if (isset($content)) {
 		    $bodyParams ['content'] = $content;
 	     }
@@ -65,13 +65,13 @@ class BlogService extends RennServiceBase {
              $fileParams = array();
 	     if (isset($ownerId)) {
 	             $params ['ownerId'] = $ownerId;
-	    }
+	     }
 	     if (isset($blogId)) {
 	             $params ['blogId'] = $blogId;
-	    }
+	     }
 	     if (isset($password)) {
 	             $params ['password'] = $password;
-	    }
+	     }
              return $this->client->execute('/v2/blog/get', 'GET', $params, $bodyParams, $fileParams);
          } 
 }

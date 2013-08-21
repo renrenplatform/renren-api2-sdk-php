@@ -1,44 +1,54 @@
 <?php
 include_once ('RennClientBase.php');
-include_once ('service/ShareService.php');
-include_once ('service/StatusService.php');
 include_once ('service/AlbumService.php');
+include_once ('service/BlogService.php');
+include_once ('service/ShareService.php');
 include_once ('service/UbbService.php');
 include_once ('service/NotificationService.php');
 include_once ('service/FeedService.php');
-include_once ('service/BlogService.php');
-include_once ('service/PhotoService.php');
-include_once ('service/UserService.php');
+include_once ('service/InvitationService.php');
 include_once ('service/ProfileService.php');
+include_once ('service/AppService.php');
+include_once ('service/StatusService.php');
+include_once ('service/LikeService.php');
+include_once ('service/PhotoService.php');
+include_once ('service/CommentService.php');
+include_once ('service/UserService.php');
+include_once ('service/FriendService.php');
 
 class RennClient extends RennClientBase {
-        private $shareService;
-        private $statusService;
         private $albumService;
+        private $blogService;
+        private $shareService;
         private $ubbService;
         private $notificationService;
         private $feedService;
-        private $blogService;
-        private $photoService;
-        private $userService;
+        private $invitationService;
         private $profileService;
-        function getShareService() {
-                if (empty ($this -> shareService )) {
-                        $this->shareService = new ShareService ( $this, $this->accessToken );
-                }
-                return $this->shareService;
-        }
-        function getStatusService() {
-                if (empty ($this -> statusService )) {
-                        $this->statusService = new StatusService ( $this, $this->accessToken );
-                }
-                return $this->statusService;
-        }
+        private $appService;
+        private $statusService;
+        private $likeService;
+        private $photoService;
+        private $commentService;
+        private $userService;
+        private $friendService;
         function getAlbumService() {
                 if (empty ($this -> albumService )) {
                         $this->albumService = new AlbumService ( $this, $this->accessToken );
                 }
                 return $this->albumService;
+        }
+        function getBlogService() {
+                if (empty ($this -> blogService )) {
+                        $this->blogService = new BlogService ( $this, $this->accessToken );
+                }
+                return $this->blogService;
+        }
+        function getShareService() {
+                if (empty ($this -> shareService )) {
+                        $this->shareService = new ShareService ( $this, $this->accessToken );
+                }
+                return $this->shareService;
         }
         function getUbbService() {
                 if (empty ($this -> ubbService )) {
@@ -58,11 +68,35 @@ class RennClient extends RennClientBase {
                 }
                 return $this->feedService;
         }
-        function getBlogService() {
-                if (empty ($this -> blogService )) {
-                        $this->blogService = new BlogService ( $this, $this->accessToken );
+        function getInvitationService() {
+                if (empty ($this -> invitationService )) {
+                        $this->invitationService = new InvitationService ( $this, $this->accessToken );
                 }
-                return $this->blogService;
+                return $this->invitationService;
+        }
+        function getProfileService() {
+                if (empty ($this -> profileService )) {
+                        $this->profileService = new ProfileService ( $this, $this->accessToken );
+                }
+                return $this->profileService;
+        }
+        function getAppService() {
+                if (empty ($this -> appService )) {
+                        $this->appService = new AppService ( $this, $this->accessToken );
+                }
+                return $this->appService;
+        }
+        function getStatusService() {
+                if (empty ($this -> statusService )) {
+                        $this->statusService = new StatusService ( $this, $this->accessToken );
+                }
+                return $this->statusService;
+        }
+        function getLikeService() {
+                if (empty ($this -> likeService )) {
+                        $this->likeService = new LikeService ( $this, $this->accessToken );
+                }
+                return $this->likeService;
         }
         function getPhotoService() {
                 if (empty ($this -> photoService )) {
@@ -70,17 +104,23 @@ class RennClient extends RennClientBase {
                 }
                 return $this->photoService;
         }
+        function getCommentService() {
+                if (empty ($this -> commentService )) {
+                        $this->commentService = new CommentService ( $this, $this->accessToken );
+                }
+                return $this->commentService;
+        }
         function getUserService() {
                 if (empty ($this -> userService )) {
                         $this->userService = new UserService ( $this, $this->accessToken );
                 }
                 return $this->userService;
         }
-        function getProfileService() {
-                if (empty ($this -> profileService )) {
-                        $this->profileService = new ProfileService ( $this, $this->accessToken );
+        function getFriendService() {
+                if (empty ($this -> friendService )) {
+                        $this->friendService = new FriendService ( $this, $this->accessToken );
                 }
-                return $this->profileService;
+                return $this->friendService;
         }
 }
 ?>
