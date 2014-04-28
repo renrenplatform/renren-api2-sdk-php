@@ -21,21 +21,6 @@ class StatusService extends RennServiceBase {
              return $this->client->execute('/v2/status/get', 'GET', $params, $bodyParams, $fileParams);
          } 
         /**
-         * 更新用户状态
-         * <br />对应API:{$link http://dev.renren.com/API/v2/status/put }
-         * @param String $content 状态的内容。状态内容不能长于240个字符。内容中的UBB表情代码未经过处理，需要开发者自行进行替换。UBB表情参见：[http://wiki.dev.renren.com/wiki/V2/ubb/list 获取人人网ubb列表]
-         * @return Status 状态
-         */
-         function putStatus($content) {
-             $params = array();
-             $bodyParams = array();
-             $fileParams = array();
-	     if (isset($content)) {
-	             $params ['content'] = $content;
-	     }
-             return $this->client->execute('/v2/status/put', 'POST', $params, $bodyParams, $fileParams);
-         } 
-        /**
          * 获取用户状态列表
          * <br />对应API:{$link http://dev.renren.com/API/v2/status/list }
          * @param Long $ownerId 状态所有者的用户ID
@@ -57,6 +42,21 @@ class StatusService extends RennServiceBase {
 	             $params ['pageNumber'] = $pageNumber;
 	     }
              return $this->client->execute('/v2/status/list', 'GET', $params, $bodyParams, $fileParams);
+         } 
+        /**
+         * 更新用户状态
+         * <br />对应API:{$link http://dev.renren.com/API/v2/status/put }
+         * @param String $content 状态的内容。状态内容不能长于240个字符。内容中的UBB表情代码未经过处理，需要开发者自行进行替换。UBB表情参见：[http://wiki.dev.renren.com/wiki/V2/ubb/list 获取人人网ubb列表]
+         * @return Status 状态
+         */
+         function putStatus($content) {
+             $params = array();
+             $bodyParams = array();
+             $fileParams = array();
+	     if (isset($content)) {
+	             $params ['content'] = $content;
+	     }
+             return $this->client->execute('/v2/status/put', 'POST', $params, $bodyParams, $fileParams);
          } 
         /**
          * 分享用户状态

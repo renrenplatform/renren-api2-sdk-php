@@ -2,6 +2,25 @@
 include_once ('RennServiceBase.php');
 class AlbumService extends RennServiceBase {
         /**
+         * 获取某个用户的某个相册
+         * <br />对应API:{$link http://dev.renren.com/API/v2/album/get }
+         * @param Long $albumId 相册的ID
+         * @param Long $ownerId 相册所有者的ID
+         * @return Album 相册
+         */
+         function getAlbum($albumId, $ownerId) {
+             $params = array();
+             $bodyParams = array();
+             $fileParams = array();
+	     if (isset($albumId)) {
+	             $params ['albumId'] = $albumId;
+	     }
+	     if (isset($ownerId)) {
+	             $params ['ownerId'] = $ownerId;
+	     }
+             return $this->client->execute('/v2/album/get', 'GET', $params, $bodyParams, $fileParams);
+         } 
+        /**
          * 以分页的方式获取某个用户的相册列表
          * <br />对应API:{$link http://dev.renren.com/API/v2/album/list }
          * @param Long $ownerId 相册所有者的ID
@@ -23,25 +42,6 @@ class AlbumService extends RennServiceBase {
 	             $params ['pageNumber'] = $pageNumber;
 	     }
              return $this->client->execute('/v2/album/list', 'GET', $params, $bodyParams, $fileParams);
-         } 
-        /**
-         * 获取某个用户的某个相册
-         * <br />对应API:{$link http://dev.renren.com/API/v2/album/get }
-         * @param Long $albumId 相册的ID
-         * @param Long $ownerId 相册所有者的ID
-         * @return Album 相册
-         */
-         function getAlbum($albumId, $ownerId) {
-             $params = array();
-             $bodyParams = array();
-             $fileParams = array();
-	     if (isset($albumId)) {
-	             $params ['albumId'] = $albumId;
-	     }
-	     if (isset($ownerId)) {
-	             $params ['ownerId'] = $ownerId;
-	     }
-             return $this->client->execute('/v2/album/get', 'GET', $params, $bodyParams, $fileParams);
          } 
         /**
          * 创建一个相册

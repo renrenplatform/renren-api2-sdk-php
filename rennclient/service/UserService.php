@@ -27,7 +27,7 @@ class UserService extends RennServiceBase {
         /**
          * 获取用户信息
          * <br />对应API:{$link http://dev.renren.com/API/v2/user/get }
-         * @param Long $userId 用户ID
+         * @param Long $userId 用户ID，不传时表示获取access_token对应的用户信息
          * @return User 用户
          */
          function getUser($userId) {
@@ -38,6 +38,28 @@ class UserService extends RennServiceBase {
 	             $params ['userId'] = $userId;
 	     }
              return $this->client->execute('/v2/user/get', 'GET', $params, $bodyParams, $fileParams);
+         } 
+        /**
+         * 获取当前登录用户未安装某应用里的好友列表
+         * <br />对应API:{$link http://dev.renren.com/API/v2/user/friend/uninstall/list }
+         * @return User 用户
+         */
+         function listUserFriendUninstall() {
+             $params = array();
+             $bodyParams = array();
+             $fileParams = array();
+             return $this->client->execute('/v2/user/friend/uninstall/list', 'GET', $params, $bodyParams, $fileParams);
+         } 
+        /**
+         * 获取当前登录用户在某个应用里的好友列表
+         * <br />对应API:{$link http://dev.renren.com/API/v2/user/friend/app/list }
+         * @return User 用户
+         */
+         function listUserFriendApp() {
+             $params = array();
+             $bodyParams = array();
+             $fileParams = array();
+             return $this->client->execute('/v2/user/friend/app/list', 'GET', $params, $bodyParams, $fileParams);
          } 
         /**
          * 获取某个用户的好友列表
@@ -63,17 +85,6 @@ class UserService extends RennServiceBase {
              return $this->client->execute('/v2/user/friend/list', 'GET', $params, $bodyParams, $fileParams);
          } 
         /**
-         * 获取当前登录用户未安装某应用里的好友列表
-         * <br />对应API:{$link http://dev.renren.com/API/v2/user/friend/uninstall/list }
-         * @return User 用户
-         */
-         function listUserFriendUninstall() {
-             $params = array();
-             $bodyParams = array();
-             $fileParams = array();
-             return $this->client->execute('/v2/user/friend/uninstall/list', 'GET', $params, $bodyParams, $fileParams);
-         } 
-        /**
          * 以分页的方式获取某个用户与当前登录用户的共同好友
          * <br />对应API:{$link http://dev.renren.com/API/v2/user/friend/mutual/list }
          * @param Long $userId 用户ID
@@ -87,17 +98,6 @@ class UserService extends RennServiceBase {
 	             $params ['userId'] = $userId;
 	     }
              return $this->client->execute('/v2/user/friend/mutual/list', 'GET', $params, $bodyParams, $fileParams);
-         } 
-        /**
-         * 获取当前登录用户在某个应用里的好友列表
-         * <br />对应API:{$link http://dev.renren.com/API/v2/user/friend/app/list }
-         * @return User 用户
-         */
-         function listUserFriendApp() {
-             $params = array();
-             $bodyParams = array();
-             $fileParams = array();
-             return $this->client->execute('/v2/user/friend/app/list', 'GET', $params, $bodyParams, $fileParams);
          } 
         /**
          * 获取当前登录用户信息

@@ -2,29 +2,6 @@
 include_once ('RennServiceBase.php');
 class PhotoService extends RennServiceBase {
         /**
-         * 上传照片至用户相册。此接口需要采用multipart/form-data的编码方式。
-         * <br />对应API:{$link http://dev.renren.com/API/v2/photo/upload }
-         * @param Long $albumId 相册ID,albumId省略时会上传到应用相册
-         * @param String $description 照片描述。不能超过200个字符
-         * @param $paramter.simpleType2 $file 照片
-         * @return Photo 照片
-         */
-         function uploadPhoto($albumId, $description, $file) {
-             $params = array();
-             $bodyParams = array();
-             $fileParams = array();
-	     if (isset($albumId)) {
-	             $params ['albumId'] = $albumId;
-	     }
-	     if (isset($description)) {
-	             $params ['description'] = $description;
-	     }
-	     if (isset($file)) {
-	             $fileParams ['file'] = $file;
-	     }
-             return $this->client->execute('/v2/photo/upload', 'POST', $params, $bodyParams, $fileParams);
-         } 
-        /**
          * 获取某个用户某个相册里的某张照片
          * <br />对应API:{$link http://dev.renren.com/API/v2/photo/get }
          * @param Long $albumId 相册的ID
@@ -50,6 +27,29 @@ class PhotoService extends RennServiceBase {
 	             $params ['password'] = $password;
 	     }
              return $this->client->execute('/v2/photo/get', 'GET', $params, $bodyParams, $fileParams);
+         } 
+        /**
+         * 上传照片至用户相册。此接口需要采用multipart/form-data的编码方式。
+         * <br />对应API:{$link http://dev.renren.com/API/v2/photo/upload }
+         * @param Long $albumId 相册ID,albumId省略时会上传到应用相册
+         * @param String $description 照片描述。不能超过200个字符
+         * @param $paramter.simpleType2 $file 照片
+         * @return Photo 照片
+         */
+         function uploadPhoto($albumId, $description, $file) {
+             $params = array();
+             $bodyParams = array();
+             $fileParams = array();
+	     if (isset($albumId)) {
+	             $params ['albumId'] = $albumId;
+	     }
+	     if (isset($description)) {
+	             $params ['description'] = $description;
+	     }
+	     if (isset($file)) {
+	             $fileParams ['file'] = $file;
+	     }
+             return $this->client->execute('/v2/photo/upload', 'POST', $params, $bodyParams, $fileParams);
          } 
         /**
          * 以分页的方式获取某个用户某个相册里的照片列表

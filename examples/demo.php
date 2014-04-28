@@ -10,8 +10,8 @@ $renn_client->setDebug ( DEBUG_MODE );
 $renn_client->authWithStoredToken ();
 // 获得用户接口
 $user_service = $renn_client->getUserService ();
-// 获得当前登录用户
-$user = $user_service->getUserLogin ();
+// 获得指定用户
+$user = $user_service->get ( 431695399 );
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
